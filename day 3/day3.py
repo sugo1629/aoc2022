@@ -35,6 +35,33 @@ for index, line in enumerate(data, start=1):
 
 print(f'Part 2: {puzzle}')
 
+# create a result variable to keep track of the score
+result = 0
 
+# loop through the items in the list
+for item in data:
+    # get the length of the string
+    length = len(item)
+
+    # split the string into two halves
+    half1 = item[:length // 2]
+    half2 = item[length // 2:]
+
+    # loop through the characters in the first half
+    for char in half1:
+        # check if the character is also in the second half
+        if char in half2:
+            # add the score to the result variable
+            # a-z is 1-26 and A-Z is 27-52
+            if char.islower():
+                result += ord(char) - ord('a') + 1
+            else:
+                result += ord(char) - ord('A') + 27
+
+            # exit the loop after the first match is found
+            break
+
+# print the final result
+print(result)
 
 
